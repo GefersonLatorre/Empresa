@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Empresa.Models.Tiempo>
+
+@{
+    ViewBag.Title = "Tiempos";
+}
+
+<div class="form-group">
+    <div style="text-align: right; margin-top: 1%">
+        <div class="btn btn-default">
+            @Html.ActionLink("Volver a Lista", "Listar", "Actividad")
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2 style="color:darkorange; font-size: 40px; font-family:Castellar"><i>Tiempos</i></h2>
+    </div>
+    <br />
+    <br />
+    <div class="col-md-4">
+        <div style="font-size:18px" class="btn btn-success">
+            @Html.ActionLink("Nuevo", "Crear")
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table style="border-width: 3px; border-style: solid; border-color: black; background-color: black " class="table table-striped">
+    <tr style="color:darkorange;font-family:'Lucida Sans'">
+        <th>
+            <u>
+                Fecha
+            </u>
+        </th>
+        <th>
+            <u>
+                Horas
+            </u>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:darkgreen">
+            <td>
+                @(String.Format("{0:dd/MM/yyyy}", item.Fecha))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horas)
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="col-ml-2 col-md-10">
+                        <div style="font-size:15px;width:80px" class="btn btn-danger">
+                            @Html.ActionLink("Eliminar", "Eliminar", "Tiempo", new { id = item.Id }, null)
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

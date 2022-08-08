@@ -1,0 +1,56 @@
+﻿@model Empresa.Models.ViewModels.EmpleadoVM
+@{
+    ViewBag.Title = "Autenticación";
+}
+
+<div style="background-color: black; margin: 0% 22%; text-align: center; border-style: solid; border-color: black; border-radius: 20px">
+    
+    <h2 style="margin-bottom: 10%; color: #5cb85c; font-family: Castellar">Autenticación Empleado</h2>
+    
+    @using (Html.BeginForm("Autenticacion", "Empleado", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12" style="margin: 1.5% 0%">
+                    <div class="col-md-3">
+                        <label style="color:limegreen;font-family:'Lucida Sans'">
+                            Usuario
+                        </label>
+                        <label style="color:red;font-family:'Lucida Sans'">
+                            *
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(e => e.Usuario, "", new { @class = "form-control" })
+                        <br />
+                        @Html.ValidationMessageFor(e => e.Usuario, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin: 1.5% 0%">
+                    <div class="col-md-3">
+                        <label style="color:limegreen;font-family:'Lucida Sans'">
+                            Clave
+                        </label>
+                        <label style="color:red;font-family:'Lucida Sans'">
+                            *
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(e => e.Clave, "", new { @class = "form-control" })
+                        <br />
+                        @Html.ValidationMessageFor(e => e.Clave, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin: 5% 0% ">
+                    <div style="text-align:center">
+                        <input value="Validar" class="btn btn-success" type="submit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

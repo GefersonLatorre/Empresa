@@ -1,0 +1,65 @@
+﻿@*@model Empresa.Models.Actividad*@
+@model Empresa.Models.ViewModels.ActividadVM
+
+@{
+    ViewBag.Title = "Crear Actividad";
+}
+
+@*<script src="@Url.Content("~/Scripts/jquery-3.3.1.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#cantidadProducto').on('input',function () {
+                $.ajax({
+                    data: { pro: $('#c').val(), codigo: $('#codigo').val() },
+                    type: 'GET',
+                    url: '@Url.Action("pre", "Detalle")',
+                    success: function (resultado) {
+                        $('#pre').val(resultado);
+                    }
+                })
+            })
+        })
+    </script>*@
+
+@using (Html.BeginForm("Crear", "Actividad", FormMethod.Post))
+{
+    <div class="form-horizontal" style="background-color: black; margin: 0% 25%; text-align: center; border-style: solid; border-color: black; border-radius: 20px">
+
+        <h2 style="color: #5cb85c; font-family: Castellar">@ViewBag.Title</h2>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <label style="color: limegreen; font-family: 'Lucida Sans'">
+                        Descripción
+                    </label>
+                    <label style="color: red; font-family: 'Lucida Sans'">
+                        *
+                    </label>
+                </div>
+                <div class="col-md-9">
+                    @Html.TextAreaFor(a => a.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    <br />
+                    @Html.ValidationMessageFor(a => a.Descripcion, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-12" style="margin: 3% 0%">
+                    <div style="text-align:right">
+                        <input value="Guardar" class="btn btn-success" type="submit"/>
+                    </div>
+                    <br />
+                    <div style="text-align:left">
+                        <div class="btn btn-default">
+                            @Html.ActionLink("Volver a Lista", "Listar", "Actividad")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

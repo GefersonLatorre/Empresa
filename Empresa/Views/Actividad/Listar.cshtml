@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Empresa.Models.Actividad>
+
+@{
+    ViewBag.Title = "Actividades";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Empresa", "", "", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div style="text-align: right; margin-top:1%">
+            <div style="font-size: 15px; width: 120px" class="btn btn-danger">
+                @Html.ActionLink("Cerrar Sesion", "CerrarSesion")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">    
+    <div class="col-md-6">
+        <h2 style="color:darkorange; font-size: 40px; font-family:Castellar"><i>Lista de Actividades</i></h2>
+    </div>
+    <br />
+    <br />
+    <div class="col-md-4">
+        <div style="font-size:18px" class="btn btn-success">
+            @Html.ActionLink("Nueva", "Crear")
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table style="border-width: 3px; border-style: solid; border-color: black; background-color: black " class="table table-striped">
+    <tr style="color:darkorange;font-family:'Lucida Sans'">
+        <th>
+            <u>
+                Descripción
+            </u>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:darkgreen">
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="col-ml-2 col-md-10">
+                        <div style="font-size:15px;width:80px" class="btn btn-info">
+                            @Html.ActionLink("Tiempos", "Listar", "Tiempo", new { id = item.Id }, null)
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
